@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AVL</title>
+    <style>
+      .main_box {
+        width: 700px;
+        height: 200px;
+        /* background-color: black; */
+        background-color: #262649;
+        padding: 12px;
+        margin-top: 70px;
+        margin-left: 250px;
+        display: flex;
+        align-items: flex-end;
+      }
+      .box {
+        width: 150px;
+        height: 100%;
+        display: inline-block;
+      }
+      .btn {
+        /* text-align: center; */
+        margin-top: 50px;
+        width: 820px;
+        margin: auto;
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-around;
+
+      }
+      .btn1 {
+        background-color: green;
+        color: white;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        width: 70px;
+        height: 30px;
+      }
+      .btn2 {
+        height: 30px;
+        width: 70px;
+        background-color: red;
+        color: white;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main_box">
+      <div class="box" id="box1"></div>
+      <div class="box" id="box2"></div>
+      <div class="box" id="box3"></div>
+      <div class="box" id="box4"></div>
+      <div class="box" id="box5"></div>
+    </div>
+    <div class="btn">
+      <button class="btn1" id="start">
+        Start
+      </button>
+      <button class="btn2" id="stop">Stop</button>
+    </div>
+    <script>
+      let boxes = document.getElementsByClassName("box");
+      let interval;
+      document.addEventListener("DOMContentLoaded", function (event) {
+        console.log(boxes);
+
+        // selecting random color
+        for (const box of boxes) {
+          var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+          box.style.backgroundColor = "#" + randomColor;
+        }
+      });
+
+      document.getElementById("start").onclick = () => {
+        document.getElementById("start").disabled = true;
+        interval = setInterval(() => {
+          for (const box of boxes) {
+            box.style.height = Math.random() * 170 + "px";
+          }
+        }, 700);
+      };
+      document.getElementById("stop").onclick = () => {
+        document.getElementById("start").disabled = false;
+        clearInterval(interval);
+      };
+    </script>
+  </body>
+</html>
